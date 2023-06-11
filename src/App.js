@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import ChatPage from './ChatPage';
+import './App.css'
 
 const App = () => {
   const [username, setUsername] = useState('');
