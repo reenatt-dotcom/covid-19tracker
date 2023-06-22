@@ -20,6 +20,7 @@ const ChatPage = ({ username }) => {
       { id: 1, username: 'user1', online: true },
       { id: 2, username: 'user2', online: false },
       { id: 3, username: 'user3', online: true },
+      { id: 4, username: 'computer', online: true }, // Add computer user
       // ... more user data
     ];
     setUsers(userData);
@@ -47,7 +48,23 @@ const ChatPage = ({ username }) => {
       timestamp: Date.now().toString(),
     };
     setMessages([...messages, newMessage]);
+
+    // Simulate computer response
+    setTimeout(() => {
+      const computerMessage = {
+        id: messages.length + 2,
+        username: 'computer',
+        message: generateComputerResponse(message),
+        timestamp: Date.now().toString(),
+      };
+      setMessages((prevMessages) => [...prevMessages, computerMessage]);
+    }, 1000); // Simulate delay before computer responds
   };
+
+  const generateComputerResponse = (userMessage) => {
+    return `${userMessage} world`;
+  };
+  
 
   return (
     <div className="chat-page">
